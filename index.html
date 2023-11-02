@@ -1,0 +1,66 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" href="estilo.css">
+    <script src="angular.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js">
+    </script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="mainController">
+    <ul id="messages"></ul>
+    <div>
+        <h1>Chat de Conversa</h1>
+        <div class="container">
+            <section id="chat-area">
+    
+                <div>
+                    <i id="toggleInfo" class="fal fa-info-circle" onclick="handleToggleLeftBar()" ></i>
+                    
+                    <div id="messages" class="messages">
+                        <div id="initialMessage"></div>
+                    </div>
+                </div>
+    
+                <div id="send-messages" >
+                    <input  type="text" id="input-message" name="message" autocomplete="off" autofocus onkeypress="
+                    event.target.value += '\n'
+                    if(event.key == 'Enter'){
+                        Submit(event)}
+                        event.target.value += '\n'
+                    ">
+                    <i class="fas fa-paper-plane" onclick="Submit(event)"></i>
+                </div>
+            </section>
+    
+            <section id="left-bar">
+                <div>
+                    <h2>Informações do chat</h2>
+        
+                    <h3 id="online"><i style="color: green;" class="fas fa-circle"></i>0 Visíveis</h3>
+                    <h3 id="messages-received"><i class="fad fa-inbox-in"></i> 0 Mensagens </h3>
+                </div>
+    
+                <div id="bars">
+                    <i class="fad fa-arrow-left"></i>
+                </div>
+            </section>
+    
+            <div id="enter-user">
+                <div class="content">
+                    <h1>Ops! Parece que você é novo por aqui...</h1>
+                    <p aria-expanded="truex">Por favor, digite abaixo o seu nome.</p>
+    
+                    <input type="text" id="input-user" autofocus required minlength="4">
+                    <button onclick="toggleBoxForNewUser('get')">Entrar</button>
+                </div>
+            </div>
+        </div>
+
+      <input id="m" ng-model="message" autocomplete="off" />
+      <button ng-click="send()">Send</button>
+    </div>
+  </body>
+</html>
